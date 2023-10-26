@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="lab4_styles.css">
+        <script src="lab4_script.js"></script>
+        <title>GPA Calculator</title>
+
+    </head>
+    <body>
+       
+        <h1>GPA Calculator</h1>
+        <form>
+        <table>
+            <tr>
+                <th></th>
+                <th>Credit</th>
+                <th>Score</th>
+            </tr>
+            <tr>
+
+            <th><label for="firstclass">Circuit Theory 1</label></th>
+            <th><input type="number" id="firstclassCredit" name="firstclassCredit"></th>
+            <th><input type="text" id="firstClassScore" name="firstclassScore"></th>
+        </tr>
+        <tr>
+           <th><label for="secondclass">Probability & Statistics</label></th>
+          <th><input type="number" id="secondclassCredit" name="secondclassCredit"></th>
+            <th><input type="text" id="secondClassScore" name="secondclassScore"></th>
+        </tr>
+            <tr>
+                <th><label for="thirdclass">Modern Physics</label></th>
+                <th><input type="number" id="thirdclassCredit" name="thirdclassCredit"></th>
+                <th><input type="text" id="thirdClassScore" name="thirdclassScore"></th>
+            </tr>
+        <tr> 
+            <th><label for="fourthclass">American History 1</label></th>
+            <th><input type="number" id="fourthclassCredit" name="fourthclassCredit"></th>
+           <th> <input type="text" id="fourthClassScore" name="fourthclassScore"></th>
+        </tr>
+           
+        <tr>
+            <th><label for="fifthclass">British Literature</label></th>
+           <th><input type="number" id="fifthclassCredit" name="fifthclassCredit"></th>
+            <th><input type="text" id="fifthClassScore" name="fifthclassScore"></th>
+        </tr>
+            
+           
+
+    </table>
+    <br><br> 
+   
+    <button onclick="calculate()">Calculate GPA</button>
+    <input type="reset" value="Reset">
+    <p id="GPA"></p>
+</form>
+<br>
+<h2><a href="index.html">Back to Navigation</a></h2>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+h1{
+    font-family: arial;
+    text-align: center;
+    color: blue;
+}
+h3{
+    font-family: times;
+    text-align: left;
+    color: red;
+    text-decoration: underline;
+}
+p{
+    font-family: courier;
+    text-indent: 0.5cm;
+}
+body{
+    background-color: coral;
+}
+a:link{
+color: blue;
+}
+a:hover{
+    color: green;
+}

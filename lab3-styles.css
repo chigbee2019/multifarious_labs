@@ -1,0 +1,39 @@
+img{
+    height: 100px;
+    width: 100px;
+   
+}
+body{
+    background-color: rgb(223, 159, 40);
+
+}
+.main_page{
+   width: 1000px;
+   margin: auto; 
+}
+hgroup{
+    text-align: center;
+}
+nav{
+    text-align: center;
+    background-color: ghostwhite;
+    font-weight: bold;
+    font-size: 18px;
+    border-style: solid;
+    border-color: black;
+}
+.content{
+    background-color: ghostwhite;
+}
+a:link{
+    color: blue;
+}
+a:visited{
+    color: purple;
+}
+a:hover{
+    color: grey;
+}
+a:active{
+    color: red;
+}

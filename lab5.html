@@ -1,0 +1,98 @@
+<?xml version = "1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+        .calculator {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="button"] {
+            width: 50px;
+            height: 40px;
+            margin: 5px;
+        }
+        input[type="text"]{
+            width: 300px;
+            height: 40px;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" id="display" readonly>
+        <br>
+        <input type="button" value="1" onclick="appendToDisplay('1')">
+        <input type="button" value="2" onclick="appendToDisplay('2')">
+        <input type="button" value="3" onclick="appendToDisplay('3')">
+        <input type="button" value="+" onclick="appendToDisplay('+')">
+        <br>
+        <input type="button" value="4" onclick="appendToDisplay('4')">
+        <input type="button" value="5" onclick="appendToDisplay('5')">
+        <input type="button" value="6" onclick="appendToDisplay('6')">
+        <input type="button" value="-" onclick="appendToDisplay('-')">
+        <br>
+        <input type="button" value="7" onclick="appendToDisplay('7')">
+        <input type="button" value="8" onclick="appendToDisplay('8')">
+        <input type="button" value="9" onclick="appendToDisplay('9')">
+        <input type="button" value="*" onclick="appendToDisplay('*')">
+        <br>
+        <input type="button" value="C" onclick="clearDisplay()">
+        <input type="button" value="0" onclick="appendToDisplay('0')">
+        <input type="button" value="=" onclick="calculate()">
+        <input type="button" value="/" onclick="appendToDisplay('/')">
+        <br>
+        <input type="button" value="!" onclick="calculateFactorial()">
+        <input type="button" value="%" onclick="calculatePercentage()">
+    </div>
+
+    <script>
+        function appendToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+
+        function calculate() {
+            const expression = document.getElementById('display').value;
+            try {
+                const result = eval(expression);
+                document.getElementById('display').value = result;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+
+        function calculateFactorial() {
+            const number = parseInt(document.getElementById('display').value);
+            let result = 1;
+            for (let i = 1; i <= number; i++) {
+                result *= i;
+            }
+            document.getElementById('display').value = result;
+        }
+
+        function calculatePercentage() {
+            const expression = document.getElementById('display').value;
+            const parts = expression.split('%');
+            if (parts.length === 2) {
+                const percent = parseFloat(parts[0]);
+                const number = parseFloat(parts[1]);
+                const result = (percent / 100) * number;
+                document.getElementById('display').value = result;
+            } else {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
