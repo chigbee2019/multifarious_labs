@@ -2,124 +2,6 @@
 <html>
 <head>
   <title>GPA Calculator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #cceeff;
-    }
-    h1 {
-      color: #333;
-    }
-    #calculator {
-      margin: 20px auto;
-      width: 400px;
-      padding: 10px;
-      border: 1px solid #ccc;
-      background-color: #f5f5f5;
-    }
-    .course {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-  </style>
-</head>
-<body>
-  <h1>GPA Calculator</h1>
-  <div id="calculator">
-    <h2>Enter Your Grades</h2>
-    <div id="courses">
-      <!-- Course input fields -->
-      <div class="course">
-        <label for="course1">Circuit Theory 1</label>
-        <select name="grade">
-          <option value="4.0">A</option>
-          <option value="3.7">A-</option>
-          <option value="3.3">B+</option>
-          <option value="3.0">B</option>
-          <option value="2.7">B-</option>
-          <option value="2.3">C+</option>
-          <option value="2.0">C</option>
-          <option value="1.7">C-</option>
-          <option value="1.0">D</option>
-          <option value="0.0">F</option>
-        </select>
-        <input type="number" name="credits" min="1" placeholder="Credits" required>
-      </div>
-      <div class="course">
-        <label for="course2">Course 2:</label>
-        <input type="text" id="course2" placeholder="Course Name">
-        <select name="grade">
-          <option value="4.0">A</option>
-          <option value="3.7">A-</option>
-          <option value="3.3">B+</option>
-          <option value="3.0">B</option>
-          <option value="2.7">B-</option>
-          <option value="2.3">C+</option>
-          <option value="2.0">C</option>
-          <option value="1.7">C-</option>
-          <option value="1.0">D</option>
-          <option value="0.0">F</option>
-        </select>
-        <input type="number" name="credits" min="1" placeholder="Credits" required>
-      </div>
-      <div class="course">
-        <label for="course3">Course 3:</label>
-        <input type="text" id="course3" placeholder="Course Name">
-        <select name="grade">
-          <option value="4.0">A</option>
-          <option value="3.7">A-</option>
-          <option value="3.3">B+</option>
-          <option value="3.0">B</option>
-          <option value="2.7">B-</option>
-          <option value="2.3">C+</option>
-          <option value="2.0">C</option>
-          <option value="1.7">C-</option>
-          <option value="1.0">D</option>
-          <option value="0.0">F</option>
-        </select>
-        <input type="number" name="credits" min="1" placeholder="Credits" required>
-      </div>
-      <div class="course">
-        <label for="course4">Course 4:</label>
-        <input type="text" id="course4" placeholder="Course Name">
-        <select name="grade">
-          <option value="4.0">A</option>
-          <option value="3.7">A-</option>
-          <option value="3.3">B+</option>
-          <option value="3.0">B</option>
-          <option value="2.7">B-</option>
-          <option value="2.3">C+</option>
-          <option value="2.0">C</option>
-          <option value="1.7">C-</option>
-          <option value="1.0">D</option>
-          <option value="0.0">F</option>
-        </select>
-        <input type="number" name="credits" min="1" placeholder="Credits" required>
-      </div>
-      <div class="course">
-        <label for="course5">Course 5:</label>
-        <input type="text" id="course5" placeholder="Course Name">
-        <select name="grade">
-          <option value="4.0">A</option>
-          <option value="3.7">A-</option>
-          <option value="3.3">B+</option>
-          <option value="3.0">B</option>
-          <option value="2.7">B-</option>
-          <option value="2.3">C+</option>
-          <option value="2.0">C</option>
-          <option value="1.7">C-</option>
-          <option value="1.0">D</option>
-          <option value="0.0">F</option>
-        </select>
-        <input type="number" name="credits" min="1" placeholder="Credits" required>
-      </div>
-    </div>
-    <button onclick="calculateGPA()">Calculate GPA</button>
-    <br>
-    <h2>Your GPA: <span id="gpa">0.00</span></h2>
-  </div>
   <script>
     function calculateGPA() {
       const gpaDisplay = document.getElementById("gpa");
@@ -146,5 +28,64 @@
       gpaDisplay.textContent = gpa;
     }
   </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      background-color: #cceeff;
+    }
+
+    table{
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+</head>
+<body>
+  <h1>GPA Calculator</h1>
+  <form>
+  <table>
+      <tr>
+          <th></th>
+          <th>Credit</th>
+          <th>Score</th>
+      </tr>
+      <tr>
+
+      <th><label for="firstclass">Circuit Theory 1</label></th>
+      <th><input type="number" id="firstclassCredit" name="firstclassCredit"></th>
+      <th><input type="text" id="firstClassScore" name="firstclassScore"></th>
+  </tr>
+  <tr>
+     <th><label for="secondclass">Probability & Statistics</label></th>
+    <th><input type="number" id="secondclassCredit" name="secondclassCredit"></th>
+      <th><input type="text" id="secondClassScore" name="secondclassScore"></th>
+  </tr>
+      <tr>
+          <th><label for="thirdclass">Modern Physics</label></th>
+          <th><input type="number" id="thirdclassCredit" name="thirdclassCredit"></th>
+          <th><input type="text" id="thirdClassScore" name="thirdclassScore"></th>
+      </tr>
+  <tr> 
+      <th><label for="fourthclass">American History 1</label></th>
+      <th><input type="number" id="fourthclassCredit" name="fourthclassCredit"></th>
+     <th> <input type="text" id="fourthClassScore" name="fourthclassScore"></th>
+  </tr>
+     
+  <tr>
+      <th><label for="fifthclass">British Literature</label></th>
+     <th><input type="number" id="fifthclassCredit" name="fifthclassCredit"></th>
+      <th><input type="text" id="fifthClassScore" name="fifthclassScore"></th>
+  </tr>
+      
+     
+
+</table>
+<br><br>
+    <button onclick="calculateGPA()">Calculate GPA</button>
+    <br>
+    <h2>Your GPA: <span id="gpa">0.00</span></h2>
+  </div>
+
 </body>
 </html>
