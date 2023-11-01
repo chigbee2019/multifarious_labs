@@ -1,91 +1,133 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>GPA Calculator</title>
-  <script>
-    function calculateGPA() {
-      const gpaDisplay = document.getElementById("gpa");
-      let totalCredits = 0;
-      let totalGradePoints = 0;
-
-      const courseInputs = document.querySelectorAll(".course");
-
-      courseInputs.forEach((course, index) => {
-        const courseName = document.getElementById(`course${index + 1}`);
-        const gradeSelect = course.querySelector("select[name='grade']");
-        const creditsInput = course.querySelector("input[name='credits']");
-
-        const gradeValue = parseFloat(gradeSelect.value);
-        const creditsValue = parseInt(creditsInput.value);
-
-        if (!isNaN(gradeValue) && !isNaN(creditsValue)) {
-          totalCredits += creditsValue;
-          totalGradePoints += gradeValue * creditsValue;
+    <meta charset="UTF-8">
+    <title>GPA Calculator</title>
+    <style>
+        body {
+            background-color: #cceeff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
         }
-      });
 
-      const gpa = (totalGradePoints / totalCredits).toFixed(2);
-      gpaDisplay.textContent = gpa;
-    }
-  </script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #cceeff;
-    }
+        .container {
+            background-color: #cceeff;
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
 
-    table{
-      margin-left: auto;
-      margin-right: auto;
-    }
-  </style>
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #000;
+            text-align: center;
+        }
+
+        input.credits {
+            width: 50px;
+            text-align: center;
+        }
+
+        input.grade {
+            width: 30px;
+            text-transform: uppercase;
+        }
+
+        .gpa-result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        #calculate {
+            margin-top: 10px;
+            background-color: #0078d4;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #calculate:hover {
+            background-color: #005ba1;
+        }
+    </style>
 </head>
 <body>
-  <h1>GPA Calculator</h1>
-  <form>
-  <table>
-      <tr>
-          <th></th>
-          <th>Credit</th>
-          <th>Score</th>
-      </tr>
-      <tr>
+    <div class="container">
+        <h1>GPA Calculator</h1>
+        <table>
+            <tr>
+                <th>Course</th>
+                <th>Credits</th>
+                <th>Grade</th>
+            </tr>
+            <tr>
+                <td>Course 1</td>
+                <td><input type="number" class="credits" min="1" max="5"></td>
+                <td>
+                    <input type="text" class="grade" pattern="[AaBbCcDdFf]{1}">
+                    <span class="letter-grade"></span>
+                </td>
+            </tr>
+            <!-- Repeat the above row for Courses 2 to 5 -->
+        </table>
+        <button id="calculate">Calculate GPA</button>
+        <div class="gpa-result">
+            Your GPA is: <span id="gpa"></span>
+        </div>
+    </div>
+    <script>
+        document.getElementById("calculate").addEventListener("click", function () {
+            const creditFields = document.querySelectorAll(".credits");
+            const gradeFields = document.querySelectorAll(".grade");
+            const gpaResult = document.getElementById("gpa");
 
-      <th><label for="firstclass">Circuit Theory 1</label></th>
-      <th><input type="number" id="firstclassCredit" name="firstclassCredit"></th>
-      <th><input type="text" id="firstClassScore" name="firstclassScore"></th>
-  </tr>
-  <tr>
-     <th><label for="secondclass">Probability & Statistics</label></th>
-    <th><input type="number" id="secondclassCredit" name="secondclassCredit"></th>
-      <th><input type="text" id="secondClassScore" name="secondclassScore"></th>
-  </tr>
-      <tr>
-          <th><label for="thirdclass">Modern Physics</label></th>
-          <th><input type="number" id="thirdclassCredit" name="thirdclassCredit"></th>
-          <th><input type="text" id="thirdClassScore" name="thirdclassScore"></th>
-      </tr>
-  <tr> 
-      <th><label for="fourthclass">American History 1</label></th>
-      <th><input type="number" id="fourthclassCredit" name="fourthclassCredit"></th>
-     <th> <input type="text" id="fourthClassScore" name="fourthclassScore"></th>
-  </tr>
-     
-  <tr>
-      <th><label for="fifthclass">British Literature</label></th>
-     <th><input type="number" id="fifthclassCredit" name="fifthclassCredit"></th>
-      <th><input type="text" id="fifthClassScore" name="fifthclassScore"></th>
-  </tr>
-      
-     
+            let totalCredits = 0;
+            let totalQualityPoints = 0;
 
-</table>
-<br><br>
-    <button onclick="calculateGPA()">Calculate GPA</button>
-    <br>
-    <h2>Your GPA: <span id="gpa">0.00</span></h2>
-  </div>
+            for (let i = 0; i < creditFields.length; i++) {
+                const credits = parseFloat(creditFields[i].value);
+                const grade = gradeFields[i].value.toUpperCase();
 
+                if (!isNaN(credits) && ["A", "B", "C", "D", "F"].includes(grade)) {
+                    totalCredits += credits;
+                    totalQualityPoints += credits * getQualityPoints(grade);
+                }
+            }
+
+            if (totalCredits > 0) {
+                const gpa = totalQualityPoints / totalCredits;
+                gpaResult.textContent = gpa.toFixed(2);
+            } else {
+                gpaResult.textContent = "N/A";
+            }
+        });
+
+        function getQualityPoints(grade) {
+            switch (grade) {
+                case "A":
+                    return 4.0;
+                case "B":
+                    return 3.0;
+                case "C":
+                    return 2.0;
+                case "D":
+                    return 1.0;
+                case "F":
+                    return 0.0;
+                default:
+                    return 0.0;
+            }
+        }
+    </script>
 </body>
 </html>
