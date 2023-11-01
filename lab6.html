@@ -35,7 +35,7 @@
         <h1>GPA Calculator</h1>
         <table>
             <tr>
-               
+               <th></th>
                 <th>Credits</th>
                 <th>Grade</th>
             </tr>
@@ -78,6 +78,7 @@
 
         </table>
         <button id="calculate">Calculate GPA</button>
+        <button onclick="clearFields()">Clear</button>
         <div class="gpa-result">
             Your GPA is: <span id="gpa"></span>
         </div>
@@ -124,6 +125,22 @@
                     return 0.0;
             }
         }
+        function clearFields() {
+      const courseInputs = document.querySelectorAll(".course");
+
+      courseInputs.forEach((course, index) => {
+        const courseName = document.getElementById(`course${index + 1}`);
+        const gradeSelect = course.querySelector("select[name='grade']");
+        const creditsInput = course.querySelector("input[name='credits']");
+
+        courseName.value = "";
+        gradeSelect.value = "4.0";
+        creditsInput.value = "";
+      });
+
+      const gpaDisplay = document.getElementById("gpa");
+      gpaDisplay.textContent = "0.00";
+    }
     </script>
 </body>
 </html>
