@@ -87,6 +87,7 @@
             const creditFields = document.querySelectorAll(".credits");
             const gradeFields = document.querySelectorAll(".grade");
             const gpaResult = document.getElementById("gpa");
+            const letterGradeResult = document.getElementById("letter-grade");
 
             let totalCredits = 0;
             let totalQualityPoints = 0;
@@ -100,13 +101,29 @@
                     totalQualityPoints += credits * getQualityPoints(grade);
                 }
             }
-
             if (totalCredits > 0) {
-                const gpa = totalQualityPoints / totalCredits;
-                gpaResult.textContent = gpa.toFixed(2);
-            } else {
-                gpaResult.textContent = "N/A";
-            }
+            const gpa = totalQualityPoints / totalCredits;
+            gpaResult.textContent = gpa.toFixed(2);
+
+            // Make an AJAX request to calculateLetterGrade.php
+            const xhr = new XMLHttpRequest();
+
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    const letterGradeData = JSON.parse(xhr.responseText);
+                    letterGradeResult.textContent = letterGradeData.letter;
+                    letterGradeResult.style.color = letterGradeData.color;
+                }
+            };
+
+            xhr.open("POST", "calculateLetterGrade.php", true);
+            xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhr.send("gpa=" + gpa);
+        } else {
+            gpaResult.textContent = "0.00";
+            letterGradeResult.textContent = "F";
+            letterGradeResult.style.color = "red";
+        }
         });
 
         function getQualityPoints(grade) {
@@ -125,21 +142,10 @@
                     return 0.0;
             }
         }
-        for (let i = 0; i < gradeFields.length; i++) {
-                const grade = gradeFields[i].value.toUpperCase();
-                const xhr = new XMLHttpRequest();
+       
 
-                xhr.onload = function () {
-                    if (xhr.status === 200) {
-                        letterGradeFields[i].innerHTML = xhr.responseText;
-                    }
-                };
-
-                xhr.open("POST", "calculate.php", true);
-                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                xhr.send("grade=" + grade);
-            }
-        
+           
+          
         document.getElementById("clear").addEventListener("click", function () {
             const creditFields = document.querySelectorAll(".credits");
             const gradeFields = document.querySelectorAll(".grade");

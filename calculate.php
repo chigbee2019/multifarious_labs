@@ -1,23 +1,19 @@
 <?php
-function getLetterGradeColor($grade) {
-    switch (strtoupper($grade)) {
-        case "A":
-            return "green";
-        case "B":
-            return "blue";
-        case "C":
-            return "yellow";
-        case "D":
-            return "pink";
-        case "F":
-            return "red";
-        default:
-            return "black";
+function calculateLetterGrade($gpa) {
+    if ($gpa >= 3.5) {
+        return ['letter' => 'A', 'color' => 'green'];
+    } elseif ($gpa >= 2.7) {
+        return ['letter' => 'B', 'color' => 'blue'];
+    } elseif ($gpa >= 2.0) {
+        return ['letter' => 'C', 'color' => 'yellow'];
+    } elseif ($gpa >= 1.5) {
+        return ['letter' => 'D', 'color' => 'pink'];
+    } else {
+        return ['letter' => 'F', 'color' => 'red'];
     }
 }
 
-$grade = $_POST["grade"];
-$color = getLetterGradeColor($grade);
-
-echo "<label style='color: $color;'>$grade</label>";
+$gpa = floatval($_POST["gpa"]);
+$letterGrade = calculateLetterGrade($gpa);
+echo json_encode($letterGrade);
 ?>
