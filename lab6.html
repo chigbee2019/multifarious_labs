@@ -11,14 +11,6 @@
             padding: 0;
         }
 
-        .container {
-            background-color: #cceeff;
-            padding: 20px;
-            max-width: 600px;
-            margin: 0 auto;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        }
 
         table {
             width: 100%;
@@ -47,22 +39,11 @@
             font-weight: bold;
         }
 
-        #calculate {
-            margin-top: 10px;
-            background-color: #0078d4;
-            color: #fff;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-        }
 
-        #calculate:hover {
-            background-color: #005ba1;
-        }
     </style>
 </head>
 <body>
-    <div class="container">
+
         <h1>GPA Calculator</h1>
         <table>
             <tr>
@@ -84,7 +65,6 @@
         <div class="gpa-result">
             Your GPA is: <span id="gpa"></span>
         </div>
-    </div>
     <script>
         document.getElementById("calculate").addEventListener("click", function () {
             const creditFields = document.querySelectorAll(".credits");
