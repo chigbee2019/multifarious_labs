@@ -7,15 +7,14 @@
         body {
             background-color: #cceeff;
             font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
         }
 
 
         table {
-            width: 100%;
-            margin-top: 20px;
-            border-collapse: collapse;
+            
+           margin-left: auto;
+           margin-right: auto;
+        
         }
 
         th, td {
@@ -59,7 +58,35 @@
                     <span class="letter-grade"></span>
                 </td>
             </tr>
-            <!-- Repeat the above row for Courses 2 to 5 -->
+            <td>Course 1</td>
+            <td><input type="number" class="credits" min="1" max="5"></td>
+            <td>
+                <input type="text" class="grade" pattern="[AaBbCcDdFf]{1}">
+                <span class="letter-grade"></span>
+            </td>
+        </tr>
+        <td>Course 1</td>
+        <td><input type="number" class="credits" min="1" max="5"></td>
+        <td>
+            <input type="text" class="grade" pattern="[AaBbCcDdFf]{1}">
+            <span class="letter-grade"></span>
+        </td>
+    </tr>
+    <td>Course 1</td>
+    <td><input type="number" class="credits" min="1" max="5"></td>
+    <td>
+        <input type="text" class="grade" pattern="[AaBbCcDdFf]{1}">
+        <span class="letter-grade"></span>
+    </td>
+</tr>
+            <td>Course 1</td>
+            <td><input type="number" class="credits" min="1" max="5"></td>
+            <td>
+                <input type="text" class="grade" pattern="[AaBbCcDdFf]{1}">
+                <span class="letter-grade"></span>
+            </td>
+        </tr>
+
         </table>
         <button id="calculate">Calculate GPA</button>
         <div class="gpa-result">
