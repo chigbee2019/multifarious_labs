@@ -6,6 +6,7 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
+      background-color: #cceeff;
     }
     h1 {
       color: #333;
@@ -31,6 +32,8 @@
     <div id="courses">
       <!-- Course input fields -->
       <div class="course">
+        <label for="course1">Course 1:</label>
+        <input type="text" id="course1" placeholder="Course Name">
         <select name="grade">
           <option value="4.0">A</option>
           <option value="3.7">A-</option>
@@ -46,6 +49,8 @@
         <input type="number" name="credits" min="1" placeholder="Credits" required>
       </div>
       <div class="course">
+        <label for="course2">Course 2:</label>
+        <input type="text" id="course2" placeholder="Course Name">
         <select name="grade">
           <option value="4.0">A</option>
           <option value="3.7">A-</option>
@@ -61,6 +66,8 @@
         <input type="number" name="credits" min="1" placeholder="Credits" required>
       </div>
       <div class="course">
+        <label for="course3">Course 3:</label>
+        <input type="text" id="course3" placeholder="Course Name">
         <select name="grade">
           <option value="4.0">A</option>
           <option value="3.7">A-</option>
@@ -76,6 +83,8 @@
         <input type="number" name="credits" min="1" placeholder="Credits" required>
       </div>
       <div class="course">
+        <label for="course4">Course 4:</label>
+        <input type="text" id="course4" placeholder="Course Name">
         <select name="grade">
           <option value="4.0">A</option>
           <option value="3.7">A-</option>
@@ -91,6 +100,8 @@
         <input type="number" name="credits" min="1" placeholder="Credits" required>
       </div>
       <div class="course">
+        <label for="course5">Course 5:</label>
+        <input type="text" id="course5" placeholder="Course Name">
         <select name="grade">
           <option value="4.0">A</option>
           <option value="3.7">A-</option>
@@ -118,7 +129,8 @@
 
       const courseInputs = document.querySelectorAll(".course");
 
-      courseInputs.forEach((course) => {
+      courseInputs.forEach((course, index) => {
+        const courseName = document.getElementById(`course${index + 1}`);
         const gradeSelect = course.querySelector("select[name='grade']");
         const creditsInput = course.querySelector("input[name='credits']");
 
