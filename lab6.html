@@ -125,6 +125,21 @@
                     return 0.0;
             }
         }
+        for (let i = 0; i < gradeFields.length; i++) {
+                const grade = gradeFields[i].value.toUpperCase();
+                const xhr = new XMLHttpRequest();
+
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        letterGradeFields[i].innerHTML = xhr.responseText;
+                    }
+                };
+
+                xhr.open("POST", "calculate.php", true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.send("grade=" + grade);
+            }
+        
         document.getElementById("clear").addEventListener("click", function () {
             const creditFields = document.querySelectorAll(".credits");
             const gradeFields = document.querySelectorAll(".grade");
